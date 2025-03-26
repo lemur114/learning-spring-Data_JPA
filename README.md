@@ -1,30 +1,65 @@
-# spring-data-jpa-course
+# Spring Boot Student App 📚
 
-![2](https://user-images.githubusercontent.com/40702606/103156831-dfce9b00-47a4-11eb-9551-af8ffee11bd0.png)
+A simple Spring Boot application that demonstrates how to interact with a PostgreSQL database using JPA.
 
-## Course Description
+## Features ✨
+- Spring Boot with JPA for database interaction.
+- PostgreSQL setup using Docker 🐳.
+- Saves a sample student on app startup.
+- Runs with basic PostgreSQL configuration.
 
-In this course you learn everything there is to learn about Spring Data JPA allowing to build scalable backend applications backed by any relational database. Spring Data JPA is a great choice allowing to speed your development and focus on the business logic. There will be a lot of coding In this course you will learn the following:
+## Getting Started 🚀
 
-- What is Spring Data JPA
-- Connect to a real database and not in memory DB
-- How to map classes to tables
-- Hibernate Entity Life Cycle
-- Queries
-- Paging and Sorting
-- 1 to 1 Relationships
-- 1 to Many Relationships
-- Many to Many relationships
-- Transactions
+### 1. Run PostgreSQL in Docker 🐳
 
-## Check out branches
+Run PostgreSQL container with:
 
-- `git checkout main` - the main branch is starting point
-- `git checkout section-1`
-- `git checkout section-2`
-- `git checkout section-3`
-- `git checkout section-4`
-- `git checkout section-5`
-- `git checkout section-6`
-- `git checkout section-7`
-- `git checkout section-1`
+```bash
+docker run --name student-db1 -p 5432:5432 -d -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -e POSTGRES_DB=student postgres
+```
+
+### 2. Configure Application ⚙️
+
+In `application.properties`:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/student
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.format_sql=true
+```
+
+### 3. Build and Run 🏃‍♂️
+
+1. Clone/download the project.
+2. Build with Maven:
+
+   ```bash
+   mvn clean install
+   ```
+
+3. Run the app:
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
+The app will save a sample student to the database.
+
+### 4. Check Database 🔍
+
+Connect to PostgreSQL and verify the data:
+
+```bash
+psql -U postgres -d student
+```
+
+## Dependencies 📦
+
+- `spring-boot-starter-data-jpa`
+- `spring-boot-starter-web`
+- `postgresql` (JDBC driver)
+
