@@ -1,4 +1,4 @@
-# Spring Boot Student App 📚
+# Spring Boot Student App 
 
 A simple Spring Boot application that demonstrates how to interact with a PostgreSQL database using JPA.
 
@@ -63,3 +63,6 @@ psql -U postgres -d student
 - `spring-boot-starter-web`
 - `postgresql` (JDBC driver)
 
+
+##Source of learning 📚
+https://www.youtube.com/watch?v=8SGI_XS5OPw
